@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "AI Text Predictor",
+  "version": "1.0",
+  "description": "پروژه پیشنهاد کلمات با پایتون",
+  "permissions": [
+    "storage"
+  ],
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}
