@@ -1,23 +1,33 @@
 #ai-suggestion-box {
-  position: absolute;
-  background: #2b2b2b;
-  color: #ffffff;
-  border: 1px solid #555;
-  border-radius: 8px;
-  padding: 5px;
-  font-family: Tahoma, sans-serif;
-  z-index: 999999;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  direction: rtl;
+    position: absolute !important;
+    z-index: 999999 !important;
+    background: #202124 !important;
+    color: white !important;
+    border: 1px solid #5f6368 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+    display: none;
+    
+    /* 🌟 قفل‌های طلایی برای جلوگیری از بزرگ شدن باکس 🌟 */
+    width: fit-content !important; 
+    min-width: 80px !important; 
+    max-width: 300px !important; 
+    padding: 4px 0 !important;
+    margin: 0 !important;
 }
 
 .ai-suggestion-item {
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
+    padding: 8px 16px !important; 
+    font-size: 14px !important;
+    cursor: pointer !important;
+    color: #e8eaed !important;
+    margin: 0 !important;
+    
+    /* 🌟 این خط نمیذاره متن کش بیاد و باکس رو مجبور میکنه هم‌سایز کلمه بشه 🌟 */
+    white-space: nowrap !important; 
+    text-align: start !important; 
 }
 
 .ai-suggestion-item:hover, .ai-suggestion-item.active {
-  background: #444;
+    background: #3c4043 !important;
 }

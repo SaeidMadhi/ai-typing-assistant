@@ -2,16 +2,33 @@
   "manifest_version": 3,
   "name": "AI Text Predictor",
   "version": "1.0",
-  "description": "پروژه پیشنهاد کلمات با پایتون",
+  "description": "پشتیبانی کامل از کروم و فایرفاکس",
   "permissions": [
     "storage"
   ],
-  "options_page": "options.html",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "options.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
       "css": ["style.css"]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ai-predictor@myextension.com"
+    }
+  }
 }

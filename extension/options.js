@@ -1,31 +1,74 @@
+// دیکشنری ترجمه‌های افزونه
+const translations = {
+    fa: {
+        title: "⚙️ تنظیمات افزونه",
+        opt1: "تکمیل و اصلاح کلمه فعلی",
+        opt2: "پیشنهاد کلمه بعدی (هوش مصنوعی)",
+        btn: "ذخیره تنظیمات",
+        success: "✅ با موفقیت ذخیره شد!",
+        dir: "rtl"
+    },
+    en: {
+        title: "⚙️ Extension Settings",
+        opt1: "Autocomplete & Word Correction",
+        opt2: "Next Word Prediction (AI)",
+        btn: "Save Settings",
+        success: "✅ Saved successfully!",
+        dir: "ltr"
+    },
+    tr: {
+        title: "⚙️ Eklenti Ayarları",
+        opt1: "Kelime Tamamlama ve Düzeltme",
+        opt2: "Sonraki Kelime Tahmini (Yapay Zeka)",
+        btn: "Ayarları Kaydet",
+        success: "✅ Başarıyla kaydedildi!",
+        dir: "ltr"
+    }
+};
+
+// تابع تغییر متن‌ها روی صفحه
+function updateUI(lang) {
+    document.getElementById('html-tag').dir = translations[lang].dir;
+    document.getElementById('title-text').innerText = translations[lang].title;
+    document.getElementById('opt1-text').innerText = translations[lang].opt1;
+    document.getElementById('opt2-text').innerText = translations[lang].opt2;
+    document.getElementById('save-btn').innerText = translations[lang].btn;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // ۱. وقتی صفحه لود شد، تنظیمات قبلی رو از حافظه بخون
+    // خواندن تنظیمات ذخیره شده (زبان پیش‌فرض رو گذاشتیم فارسی)
     chrome.storage.sync.get({
-        autocompleteEnabled: true, // پیش‌فرض روشنه
-        nextwordEnabled: true      // پیش‌فرض روشنه
+        autocompleteEnabled: true,
+        nextwordEnabled: true,
+        uiLanguage: 'fa' 
     }, (items) => {
         document.getElementById('autocomplete-toggle').checked = items.autocompleteEnabled;
         document.getElementById('nextword-toggle').checked = items.nextwordEnabled;
+        document.getElementById('ui-lang-select').value = items.uiLanguage;
+        
+        // اعمال ترجمه همون لحظه که پاپ‌آپ باز میشه
+        updateUI(items.uiLanguage);
     });
 
-    // ۲. وقتی کاربر روی دکمه ذخیره کلیک کرد
+    // وقتی کاربر از منوی کشویی زبان دیگه‌ای رو انتخاب کرد، در لحظه متن‌ها عوض بشه
+    document.getElementById('ui-lang-select').addEventListener('change', (e) => {
+        updateUI(e.target.value);
+    });
+
+    // ذخیره کردن تنظیمات
     document.getElementById('save-btn').addEventListener('click', () => {
         const autocomplete = document.getElementById('autocomplete-toggle').checked;
         const nextword = document.getElementById('nextword-toggle').checked;
+        const uiLang = document.getElementById('ui-lang-select').value;
 
-        // ذخیره تو حافظه مرورگر
         chrome.storage.sync.set({
             autocompleteEnabled: autocomplete,
-            nextwordEnabled: nextword
+            nextwordEnabled: nextword,
+            uiLanguage: uiLang
         }, () => {
-            // نشون دادن پیام موفقیت
             const status = document.getElementById('status');
-            status.textContent = '✅ تنظیمات با موفقیت ذخیره شد!';
-            
-            // پاک کردن پیام بعد از ۲.۵ ثانیه
-            setTimeout(() => {
-                status.textContent = '';
-            }, 2500);
+            status.textContent = translations[uiLang].success; // پیام موفقیت به همون زبان
+            setTimeout(() => { status.textContent = ''; }, 2000);
         });
     });
 });

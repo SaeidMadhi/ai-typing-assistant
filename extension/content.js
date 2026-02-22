@@ -27,7 +27,6 @@ chrome.storage.onChanged.addListener((changes) => {
 // ==========================================
 const suggestionBox = document.createElement('div');
 suggestionBox.id = 'ai-suggestion-box';
-suggestionBox.dir = 'rtl';
 document.body.appendChild(suggestionBox);
 
 let currentTarget = null;
@@ -103,7 +102,7 @@ function showSuggestions(suggestions, target) {
         let div = document.createElement('div');
         div.className = 'ai-suggestion-item';
         div.innerText = word;
-        
+        div.dir = 'auto';
         div.addEventListener('mousedown', (e) => {
             e.preventDefault(); 
             e.stopPropagation();
