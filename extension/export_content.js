@@ -1,6 +1,4 @@
-// ==========================================
-// 🌟 تنظیمات و متغیرهای اولیه 🌟
-// ==========================================
+
 let modelData = null;
 let extensionSettings = {
     autocompleteEnabled: true,
@@ -11,16 +9,13 @@ chrome.storage.sync.get(extensionSettings, (items) => {
     extensionSettings = items;
 });
 
-// گوش دادن به تغییرات تنظیمات
 chrome.storage.onChanged.addListener((changes) => {
     if (changes.autocompleteEnabled) extensionSettings.autocompleteEnabled = changes.autocompleteEnabled.newValue;
     if (changes.nextwordEnabled) extensionSettings.nextwordEnabled = changes.nextwordEnabled.newValue;
     if (!extensionSettings.autocompleteEnabled && !extensionSettings.nextwordEnabled) suggestionBox.style.display = 'none';
 });
 
-// ==========================================
-// 🌟 ساختار اصلی و بارگذاری مدل 🌟
-// ==========================================
+
 const suggestionBox = document.createElement('div');
 suggestionBox.id = 'ai-suggestion-box';
 document.body.appendChild(suggestionBox);
@@ -72,9 +67,7 @@ async function fetchAndShow(prefix, previousWord, target) {
     }
 }
 
-// ==========================================
-// 🌟 مدیریت ورودی و نمایش 🌟
-// ==========================================
+
 document.addEventListener('input', async (e) => {
     if (isInserting || !e.isTrusted) return;
 
@@ -144,15 +137,12 @@ function insertWord(selectedWord, target) {
     setTimeout(() => { isInserting = false; }, 50);
 }
 
-// ==========================================
-// 🌟 کنترل با کیبورد (فقط با نگه داشتن Ctrl) 🌟
-// ==========================================
+
 document.addEventListener('keydown', (e) => {
     if (suggestionBox.style.display !== 'block') return;
     const items = suggestionBox.querySelectorAll('.ai-suggestion-item');
     if (items.length === 0) return;
 
-    // 🌟 فقط وقتی Ctrl نگه داشته شده باشد، لیست ما بالا و پایین می‌شود
     if (e.ctrlKey && e.key === 'ArrowDown') {
         e.preventDefault(); 
         e.stopPropagation();
@@ -174,7 +164,7 @@ document.addEventListener('keydown', (e) => {
         suggestionBox.style.display = 'none';
         selectedIndex = -1;
     }
-}, true); // UseCapture فعال برای اولویت بالاتر
+}, true);
 
 function updateHighlight(items) {
     items.forEach((item, index) => {
