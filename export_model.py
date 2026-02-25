@@ -2,9 +2,7 @@ import os
 import json
 from collections import defaultdict, Counter
 
-# ==========================================
-# فیلتر یکسان‌سازی متن
-# ==========================================
+
 def normalize(text):
     text = text.lower()
     replacements = {
@@ -15,9 +13,6 @@ def normalize(text):
         text = text.replace(tr_char, en_char)
     return text
 
-# ==========================================
-# متغیرهای آموزش
-# ==========================================
 vocab_dict = {}
 bigram_model = defaultdict(Counter)
 concat_dict = {}
@@ -50,20 +45,15 @@ train_model("fa.txt")
 train_model("en.txt")
 train_model("tr.txt")
 
-# ==========================================
-# 🌟 استخراج مدل به فایل JSON 🌟
-# ==========================================
 export_data = {
     "vocab": vocab_dict,
     "concat": concat_dict,
     "bigram": {}
 }
 
-# فقط ۳ پیشنهاد برتر رو ذخیره می‌کنیم تا فایل سبک بشه
 for prev_word, next_words_counter in bigram_model.items():
     export_data["bigram"][prev_word] = [word for word, count in next_words_counter.most_common(3)]
 
-# ذخیره در فایل model.json
 with open("model.json", "w", encoding="utf-8") as f:
     json.dump(export_data, f, ensure_ascii=False, separators=(',', ':'))
 
