@@ -1,4 +1,3 @@
-// دیکشنری ترجمه‌های افزونه
 const translations = {
     fa: {
         title: "⚙️ تنظیمات افزونه",
@@ -26,7 +25,6 @@ const translations = {
     }
 };
 
-// تابع تغییر متن‌ها روی صفحه
 function updateUI(lang) {
     document.getElementById('html-tag').dir = translations[lang].dir;
     document.getElementById('title-text').innerText = translations[lang].title;
@@ -36,7 +34,6 @@ function updateUI(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // خواندن تنظیمات ذخیره شده (زبان پیش‌فرض رو گذاشتیم فارسی)
     chrome.storage.sync.get({
         autocompleteEnabled: true,
         nextwordEnabled: true,
@@ -46,16 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('nextword-toggle').checked = items.nextwordEnabled;
         document.getElementById('ui-lang-select').value = items.uiLanguage;
         
-        // اعمال ترجمه همون لحظه که پاپ‌آپ باز میشه
         updateUI(items.uiLanguage);
     });
 
-    // وقتی کاربر از منوی کشویی زبان دیگه‌ای رو انتخاب کرد، در لحظه متن‌ها عوض بشه
     document.getElementById('ui-lang-select').addEventListener('change', (e) => {
         updateUI(e.target.value);
     });
 
-    // ذخیره کردن تنظیمات
     document.getElementById('save-btn').addEventListener('click', () => {
         const autocomplete = document.getElementById('autocomplete-toggle').checked;
         const nextword = document.getElementById('nextword-toggle').checked;
@@ -67,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             uiLanguage: uiLang
         }, () => {
             const status = document.getElementById('status');
-            status.textContent = translations[uiLang].success; // پیام موفقیت به همون زبان
+            status.textContent = translations[uiLang].success; 
             setTimeout(() => { status.textContent = ''; }, 2000);
         });
     });
