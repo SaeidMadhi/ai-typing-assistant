@@ -1,6 +1,4 @@
-// ==========================================
-// 🌟 مدیریت تنظیمات افزونه 🌟
-// ==========================================
+
 let extensionSettings = {
     autocompleteEnabled: true,
     nextwordEnabled: true
@@ -10,7 +8,6 @@ chrome.storage.sync.get(extensionSettings, (items) => {
     extensionSettings = items;
 });
 
-// گوش دادن به تغییرات در لحظه
 chrome.storage.onChanged.addListener((changes) => {
     if (changes.autocompleteEnabled) {
         extensionSettings.autocompleteEnabled = changes.autocompleteEnabled.newValue;
@@ -22,9 +19,7 @@ chrome.storage.onChanged.addListener((changes) => {
     }
 });
 
-// ==========================================
-// 🌟 ساختار اصلی افزونه 🌟
-// ==========================================
+
 const suggestionBox = document.createElement('div');
 suggestionBox.id = 'ai-suggestion-box';
 document.body.appendChild(suggestionBox);
@@ -32,7 +27,7 @@ document.body.appendChild(suggestionBox);
 let currentTarget = null;
 let fetchCounter = 0;
 let isNextWordMode = false;
-let isInserting = false; // 🌟 این همون قفل جادوییه!
+let isInserting = false; 
 
 async function fetchAndShow(prefix, previousWord, target) {
     if (!prefix && !previousWord) {
@@ -59,7 +54,6 @@ async function fetchAndShow(prefix, previousWord, target) {
 }
 
 document.addEventListener('input', async (e) => {
-    // 🌟 اگه داریم کلمه رو جایگذاری می‌کنیم، قفل فعاله و هیچ تایپی رو نمی‌پذیریم
     if (isInserting) return; 
     if (!e.isTrusted) return;
 
@@ -119,7 +113,7 @@ function showSuggestions(suggestions, target) {
 }
 
 function insertWord(selectedWord, target) {
-    isInserting = true; // 🌟 قفل رو فعال می‌کنیم که کدهای بالا قاطی نکنن
+    isInserting = true; 
     fetchCounter++; 
     target.focus(); 
 
@@ -149,7 +143,6 @@ function insertWord(selectedWord, target) {
         target.setSelectionRange(target.value.length, target.value.length);
     }
 
-    // 🌟 بستن قطعی باکس 🌟
     suggestionBox.style.display = 'none'; 
     suggestionBox.innerHTML = ''; 
 
@@ -158,15 +151,12 @@ function insertWord(selectedWord, target) {
         fetchAndShow("", selectedWord, target);
     }
 
-    // 🌟 بعد از ۵۰ میلی‌ثانیه قفل رو باز می‌کنیم تا کاربر بتونه به تایپش ادامه بده
     setTimeout(() => {
         isInserting = false;
     }, 50);
 }
 
-// ==========================================
-// کنترل با کیبورد (Ctrl + فلش‌ها)
-// ==========================================
+
 let selectedIndex = -1; 
 
 document.addEventListener('keydown', (e) => {
