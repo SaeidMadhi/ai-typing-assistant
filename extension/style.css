@@ -8,7 +8,6 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
     display: none;
     
-    /* 🌟 قفل‌های طلایی برای جلوگیری از بزرگ شدن باکس 🌟 */
     width: fit-content !important; 
     min-width: 80px !important; 
     max-width: 300px !important; 
@@ -23,7 +22,6 @@
     color: #e8eaed !important;
     margin: 0 !important;
     
-    /* 🌟 این خط نمیذاره متن کش بیاد و باکس رو مجبور میکنه هم‌سایز کلمه بشه 🌟 */
     white-space: nowrap !important; 
     text-align: start !important; 
 }
