@@ -15,8 +15,7 @@ This repository is divided into two main environments:
 ### 📦 Installation Guide
 
 #### Option A: Official Firefox Store
-* 🦊 **Firefox:** [Install from Mozilla Add-ons]((https://addons.mozilla.org/en-US/firefox/addon/ai-text-predictor))
-
+* 🦊 **Firefox:** [Install from Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/ai-text-predictor/)
 #### Option B: Chrome / Edge (Manual Installation)
 Since the extension is fully offline, you can easily install it for free via Developer Mode:
 1. Download this repository as a ZIP file and extract it.
