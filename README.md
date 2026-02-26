@@ -28,7 +28,8 @@ Since the extension is fully offline, you can easily install it for free via Dev
 * Hold **Ctrl** and use **Arrow Up / Arrow Down** to navigate through the AI's suggestions.
 * Press **Enter** or **Tab** to insert the predicted word.
 ## 📸 Screenshots
-![AI Text Predictor Demo](sc2T.png)
+![AI Text Predictor](sc2T.png)
+(Screenshot1T.png)
 ---
 
 ## 🇮🇷 فارسی
