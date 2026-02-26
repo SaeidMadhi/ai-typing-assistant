@@ -29,7 +29,7 @@ Since the extension is fully offline, you can easily install it for free via Dev
 * Press **Enter** or **Tab** to insert the predicted word.
 ## 📸 Screenshots
 ![AI Text Predictor](sc2T.png)
-(Screenshot1T.png)
+![extension](Screenshot1T.png)
 ---
 
 ## 🇮🇷 فارسی
