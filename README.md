@@ -43,7 +43,7 @@ Since the extension is fully offline, you can easily install it for free via Dev
 ### 📦 راهنمای نصب
 
 #### روش اول: نصب رسمی برای فایرفاکس
-* 🦊 **فایرفاکس:** [نصب از استور رسمی موزیلا]({Link_Firefox_Here})
+* 🦊 **فایرفاکس:** [نصب از استور رسمی موزیلا](https://addons.mozilla.org/en-US/firefox/addon/ai-text-predictor/)
 
 #### روش دوم: کروم و اج (نصب دستی و رایگان)
 با توجه به آفلاین بودن پروژه، می‌توانید آن را به راحتی از طریق حالت توسعه‌دهنده نصب کنید:
@@ -72,7 +72,7 @@ Bu depo (repository) iki ana ortama ayrılmıştır:
 ### 📦 Kurulum Rehberi
 
 #### Seçenek A: Resmi Firefox Mağazası
-* 🦊 **Firefox:** [Mozilla Eklentilerinden Yükle]({Link_Firefox_Here})
+* 🦊 **Firefox:** [Mozilla Eklentilerinden Yükle](https://addons.mozilla.org/en-US/firefox/addon/ai-text-predictor/)
 
 #### Seçenek B: Chrome / Edge (Manuel Kurulum)
 Eklenti tamamen çevrimdışı olduğundan, Geliştirici Modu (Developer Mode) üzerinden kolayca ve ücretsiz kurabilirsiniz:
